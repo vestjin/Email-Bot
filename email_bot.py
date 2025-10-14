@@ -117,170 +117,170 @@ def generate_weather_email(data):
     """
     # HTML模板
     html_template = '''
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <style>
-        body {
-            font-family: 'Arial', 'Microsoft YaHei', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #f5f7fa;
-            margin: 0;
-            padding: 20px;
-        }
-        .weather-container {
-            max-width: 900px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            overflow: hidden;
-        }
-        .header {
-            background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
-            color: white;
-            padding: 30px;
-            text-align: center;
-        }
-        .header h1 {
-            margin: 0;
-            font-size: 28px;
-            font-weight: bold;
-        }
-        .date-range {
-            margin-top: 10px;
-            font-size: 18px;
-            opacity: 0.9;
-        }
-        .days-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            padding: 30px;
-        }
-        .day-card {
-            background: #fff;
-            border-radius: 10px;
-            border: 1px solid #e1e8ed;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .day-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-        }
-        .card-header {
-            background: #f8f9fa;
-            padding: 20px;
-            text-align: center;
-            border-bottom: 1px solid #e1e8ed;
-        }
-        .date {
-            font-size: 18px;
-            font-weight: bold;
-            color: #2d3436;
-            margin-bottom: 5px;
-        }
-        .moon-phase {
-            font-size: 14px;
-            color: #636e72;
-        }
-        .card-content {
-            padding: 20px;
-        }
-        .temperature-section {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .temp-high {
-            font-size: 32px;
-            font-weight: bold;
-            color: #e17055;
-        }
-        .temp-low {
-            font-size: 24px;
-            color: #74b9ff;
-            margin-left: 10px;
-        }
-        .weather-icon {
-            font-size: 36px;
-            margin: 15px 0;
-        }
-        .weather-details {
-            display            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            font-size: 14px;
-        }
-        .detail-item {
-            display            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 8px 0;
-            border-bottom: 1px dashed #eee;
-        }
-        .detail-label {
-            color: #636e72;
-            font-weight: normal;
-        }
-        .detail-value {
-            font-weight: bold;
-            color: #2d3436;
-        }
-        .day-night-section {
-            margin-top: 15px;
-            padding-top: 15px;
-            border-top: 1px solid #eee;
-        }
-        .time-label {
-            font-size: 12px;
-            color: #636e72;
-            text-transform: uppercase;
-            margin-bottom: 5px;
-        }
-        .footer {
-            text-align: center;
-            padding: 20px;
-            background: #f8f9fa;
-            border-top: 1px solid #e1e8ed;
-            color: #636e72;
-            font-size: 14px;
-        }
-        
-        /* 特殊样式 */
-        .rainy-day {
-            border-left: 4px solid #74b9ff;
-        }
-        .sunny-day {
-            border-left: 4px solid #fdcb6e;
-        }
-        .cloudy-day {
-            border-left: 4px solid #b2bec3;
-        }
-        .clear-day {
-            border-left: 4px solid #00cec9;
-        }
-    </style>
-</head>
-<body>
-    <div class="weather-container">
-        <div class="header">
-            <h1>📊 天气预报报告</h1>
-            <div class="date-range">{start_date} - {end_date}</div>
+    <!DOCTYPE html>
+    <html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <style>
+            body {{
+                font-family: 'Arial', 'Microsoft YaHei', sans-serif;
+                line-height: 1.6;
+                color: #333;
+                background-color: #f5f7fa;
+                margin: 0;
+                padding: 20px;
+            }}
+            .weather-container {{
+                max-width: 900px;
+                margin: 0 auto;
+                background: white;
+                border-radius: 12px;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+                overflow: hidden;
+            }}
+            .header {{
+                background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+                color: white;
+                padding: 30px;
+                text-align: center;
+            }}
+            .header h1 {{
+                margin: 0;
+                font-size: 28px;
+                font-weight: bold;
+            }}
+            .date-range {{
+                margin-top: 10px;
+                font-size: 18px;
+                opacity: 0.9;
+            }}
+            .days-container {{
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 20px;
+                padding: 30px;
+            }}
+            .day-card {{
+                background: #fff;
+                border-radius: 10px;
+                border: 1px solid #e1e8ed;
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }}
+            .day-card:hover {{
+                transform: translateY(-5px);
+                box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            }}
+            .card-header {{
+                background: #f8f9fa;
+                padding: 20px;
+                text-align: center;
+                border-bottom: 1px solid #e1e8ed;
+            }}
+            .date {{
+                font-size: 18px;
+                font-weight: bold;
+                color: #2d3436;
+                margin-bottom: 5px;
+            }}
+            .moon-phase {{
+                font-size: 14px;
+                color: #636e72;
+            }}
+            .card-content {{
+                padding: 20px;
+            }}
+            .temperature-sectiontemperature-section {{
+                text-align: center;
+                margin-bottom: 20px;
+            }}
+            .temp-high {{
+                font-size: 32px;
+                font-weight: bold;
+                color: #e17055;
+            }}
+            .temp-low {{
+                font-size: 24px;
+                color: #74b9ff;
+                margin-left: 10px;
+            }}
+            .weather-icon {{
+                font-size: 36px;
+                margin: 15px 0;
+            }}
+            .weather-details {{
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+                font-size: 14px;
+            }}
+            .detail-item {{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 8px 0;
+                border-bottom: 1px dashed #eee;
+            }}
+            .detail-label {{
+                color: #636e72;
+                font-weight: normal;
+            }}
+            .detail-value {{
+                font-weight: bold;
+                color: #2d3436;
+            }}
+            .day-night-section {{
+                margin-top: 15px;
+                padding-top: 15px;
+                border-top: 1px solid #eee;
+            }}
+            .time-label {{
+                font-size: 12px;
+                color: #636e72;
+                text-transform: uppercase;
+                margin-bottom: 5px;
+            }}
+            .footer {{
+                text-align: center;
+                padding: 20px;
+                background: #f8f9fa;
+                border-top: 1px solid #e1e8ed;
+                color: #636e72;
+                font-size: 14px;
+            }}
+            
+            /* 特殊样式 */
+            .rainy-day {{
+                border-left: 4px solid #74b9ff;
+            }}
+            .sunny-day {{
+                border-left: 4px solid #fdcb6e;
+            }}
+            .cloudy-day {{
+                border-left: 4px solid #b2bec3;
+            }}
+            .clear-day {{
+                border-left: 4px solid #00cec9;
+            }}
+        </style>
+    </head>
+    <body>
+        <div class="weather-container">
+            <div class="header">
+                <h1>📊 天气预报报告</h1>
+                <div class="date-range">{start_date} - {end_date}</div>
+            </div>
+            
+            <div class="days-container">
+                {days_content}
+            </div>
+            
+            <div class="footer">
+                数据更新时间: {update_time} | 祝你度过愉快的一天! 🌈
+            </div>
         </div>
-        
-        <div class="days-container">
-            {days_content}
-        </div>
-        
-        <div class="footer">
-            数据更新时间: {update_time} | 祝你度过愉快的一天! 🌈
-        </div>
-    </div>
-</body>
-</html>
-'''
+    </body>
+    </html>
+    '''
 
     # 配置映射字典
     WEATHER_ICONS = {
