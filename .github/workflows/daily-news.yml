@@ -1,0 +1,36 @@
+name: Daily 60s News Report
+
+on:
+  schedule:
+    # 每天UTC时间发送
+    - cron: '0 23 * * *'
+  workflow_dispatch:  # 允许手动触发
+
+jobs:
+  send-news-report:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11.6'
+
+    - name: Run Daily 60s Report
+      env:
+        # SMTP 配置（复用天气邮件的配置）
+        SMTP_SERVER: ${{ secrets.SMTP_SERVER }}
+        SMTP_PORT: ${{ secrets.SMTP_PORT }}
+        SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }}
+        SENDER_PASSWORD: ${{ secrets.SENDER_PASSWORD }}
+        RECEIVER_EMAILS: ${{ secrets.RECIPIENT_EMAILS }}
+        
+        # 应用配置
+        NEWS_COUNT: ${{ secrets.NEWS_COUNT }}
+        LINE_WIDTH: ${{ secrets.LINE_WIDTH }}
+        ENABLE_EMAIL: ${{ secrets.ENABLE_EMAIL }}
+      run: |
+        python news_bot.py
