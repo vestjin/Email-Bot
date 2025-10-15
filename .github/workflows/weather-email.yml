@@ -3,7 +3,7 @@ name: Daily Weather Email Bot
 on:
   schedule:
     # 每天UTC时间0点（北京时间早上8点）发送
-    - cron: '0 0 * * *'
+    - cron: '11 1 * * *'
   workflow_dispatch:  # 允许手动触发
 
 jobs:
