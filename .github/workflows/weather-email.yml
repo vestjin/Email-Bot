@@ -3,7 +3,7 @@ name: Daily Weather Email Bot
 on:
   schedule:
     # 每天UTC时间"分 时 日 月 星期"发送
-    - cron: '0 23 * * *'
+    - cron: '0 22 * * *'
     - cron: '0 5 * * *'
     - cron: '0 12 * * *'
     
